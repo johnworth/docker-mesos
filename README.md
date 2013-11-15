@@ -19,8 +19,8 @@ It launches master by default at localhost:5050
 
 ###Yeah I know that I need to find a better way
 
-1. Start a container as master.
-2. Change the name of the docker container so it is easy to link to.gg
+    1. Start a container as master.
+    2. Change the name of the docker container so it is easy to link to.gg
 
 ```
 $ sudo docker ls -a
@@ -31,20 +31,19 @@ $ sudo docker link <old name found by step above> <new easy to remember name>
 
 ```
 
-3. Start slave container with the following command
+    3. Start slave container with the following command
 
 ```
 $ sudo docker run -link /<name of container> -i -t <your username>/mesos /bin/bash
 ```
 
-4. Find the master ip address
+    4. Find the master ip address
 
 ```
 $ env
 ```
 
-5. Use the ip address of the linked container as the --master argument
-
+    5. Use the ip address of the linked container as the --master argument
 
 ```
 $ mesos-slave --master=<ip address of linked container>:<port of linked container>
