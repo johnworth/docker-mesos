@@ -1,0 +1,3 @@
+#!/bin/sh
+
+mesos-slave --master=$SECONDARY_PORT_5050_TCP_ADDR:$SECONDARY_PORT_5050_TCP_PORT

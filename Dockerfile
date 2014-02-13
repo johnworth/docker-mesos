@@ -1,7 +1,7 @@
 # Docker-Verson 0.7
 
 From ubuntu
-MAINTAINER Michael Whitehead <whitehead1415@gmail.com>
+MAINTAINER John Wregglesworth <wregglej@iplantcollaborative.org@gmail.com>
 
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get update
@@ -18,7 +18,11 @@ RUN (cd mesos && ./bootstrap)
 RUN (cd mesos && ./configure --with-webui --with-included-zookeeper --disable-perftools)
 RUN (cd mesos && make)
 RUN (cd mesos && make install)
-RUN (cp mesos/src/.libs/libmesos-0.16.0.so /usr/lib)
+RUN (cp mesos/src/.libs/libmesos*.so /usr/lib)
+RUN apt-get remove -y autoconf make gcc cpp patch python-dev git libtool libghc-zlib-dev libcurl4-openssl-dev build-essential libsask2-dev
+RUN (cd mesos && make clean)
+
+ADD launch-secondary.sh /usr/local/bin/launch-secondary.sh
 
 EXPOSE 5050
 
