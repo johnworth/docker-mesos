@@ -19,8 +19,8 @@ RUN (cd mesos && ./configure --with-webui --with-included-zookeeper --disable-pe
 RUN (cd mesos && make)
 RUN (cd mesos && make install)
 RUN (cp mesos/src/.libs/libmesos*.so /usr/lib)
-RUN apt-get remove -y autoconf make gcc cpp patch python-dev git libtool libghc-zlib-dev libcurl4-openssl-dev build-essential libsask2-dev
 RUN (cd mesos && make clean)
+RUN apt-get remove -y autoconf make gcc cpp patch python-dev git libtool libghc-zlib-dev libcurl4-openssl-dev build-essential libsasl2-dev
 
 ADD launch-secondary.sh /usr/local/bin/launch-secondary.sh
 
